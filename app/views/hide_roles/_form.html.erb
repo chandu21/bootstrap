@@ -1,0 +1,28 @@
+<%= form_for HideRole.new, :html => { :class => "form-horizontal hide_role" } do |f| %>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th><%= 'Role' %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @roles.each do |hide_role| %>
+        <tr>
+          <td><%= f.check_box :role_ids, checked: true %></td>
+          <td><%= hide_role.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                hide_roles_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>
